@@ -39,7 +39,8 @@ public class Fridge {
     Animal getAnimal() {
         return animal;
     }
-    public void freeFridge(){
+
+    public void freeFridge() {
         animal = null;
     }
 

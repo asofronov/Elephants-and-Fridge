@@ -49,20 +49,27 @@ public class Animal implements IAnimal {
     }
 
     // Достать зверя
-    public void getAnimal(Fridge fridge) {
-        if (!fridge.getEmpty()) {
-            frozen = false;
+    public void getAnimal(Fridge fridge) throws FrozenException {
+        try {
             openDoor(fridge);
-            fridge.setEmpty(true);
-            fridge.freeFridge();
-            System.out.println(getName() + " come out from the fridge");
+            if (!fridge.getEmpty()) {
+                frozen = false;
+                fridge.setEmpty(true);
+                fridge.freeFridge();
+                System.out.println(getName() + " come out from the fridge");
+            } else {
+                throw new FrozenException();
+            }
+        } catch (FrozenException ex) {
+            System.out.println("There is no animals in the fridge");
+        } finally {
             closeDoor(fridge);
         }
     }
 
     // Метод определения наличия свободного места
     public boolean hasFreeSpace(Fridge fridge, Animal animal) {
-        return getMaxCapacity(fridge) > getUsedCapacity() && fridge.getLimitMass() > animal.getMass();
+        return getMaxCapacity(fridge) >= getUsedCapacity() && fridge.getLimitMass() >= animal.getMass();
     }
 
     // Вычисление максимальной вместимости холодильника
