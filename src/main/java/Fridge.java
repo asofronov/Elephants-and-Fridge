@@ -58,8 +58,10 @@ public class Fridge {
         isDoorOpen = door;
     }
 
-    public int FridgeCapacity() {
+    public int getFridgeCapacity() {
         fridgeCapacity = getLimitHeight() * getLimitWidth() * getLimitLength();
         return fridgeCapacity;
     }
+
+
 }

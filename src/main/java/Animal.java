@@ -18,7 +18,7 @@ public class Animal implements IAnimal {
 
 
     //Дсотуп к переменной массы зверя
-    private double getMass() {
+    private int getMass() {
         return mass;
     }
 
@@ -39,7 +39,7 @@ public class Animal implements IAnimal {
                 }
             }
         } catch (FrozenException ex) {
-            System.out.println("Oops, there is somebody in the fridge");
+            System.out.println("Oops, there is " + fridge.getAnimal().name + " in the fridge");
         } catch (SizeException ex) {
             System.out.println("Oops, your pet is too large");
         } finally {
@@ -68,7 +68,7 @@ public class Animal implements IAnimal {
 
     // Метод определения наличия свободного места
     public boolean compareSizes(Fridge fridge, Animal animal) {
-        return fridge.FridgeCapacity() >= getAnimalSize() && fridge.getLimitMass() >= animal.getMass();
+        return fridge.getFridgeCapacity() >= getAnimalSize() && fridge.getLimitMass() >= animal.getMass();
     }
 
     // Вычисление места занятого животным
