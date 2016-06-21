@@ -5,7 +5,8 @@ public class Main {
 
     public static void main(String[] args) {
         Fridge Ariston = new Fridge(200,70,100,600);
-        Elephant Joe = new Elephant("Joe",200,50,50,300);
+        Elephant elephant = new Elephant("Joe",300,50,50,600);
+        elephant.putAnimal(Ariston, elephant);
 
 
     }

@@ -1,9 +1,6 @@
-/**
- * Created by aleks on 21.06.2016.
- */
 public class Elephant extends Animal {
 
-    public Elephant(String name, double height, double width, double length, double mass) {
+    public Elephant(String name, int height, int width, int length, int mass) {
         super(name, height, width, length, mass);
     }
 }

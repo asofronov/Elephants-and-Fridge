@@ -19,8 +19,8 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="Elephants_&amp;_Fridge_main" target="1.8" />
-      <module name="Elephants_&amp;_Fridge_test" target="1.8" />
+      <module name="Elephants-and-Fridge_main" target="1.8" />
+      <module name="Elephants-and-Fridge_test" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

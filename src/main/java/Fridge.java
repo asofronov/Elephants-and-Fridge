@@ -1,50 +1,59 @@
 public class Fridge {
     private boolean isDoorOpen;
-    private double limitHeight, limitWidth, limitLength, limitMass;
+    private int limitHeight, limitWidth, limitLength, limitMass;
     private Animal animal;
+    private boolean isEmpty = true;
 
-    public Fridge(double limitHeight, double limitWidth, double limitLength, double limitMass) {
+    public Fridge(int limitHeight, int limitWidth, int limitLength, int limitMass) {
         this.limitHeight = limitHeight;
         this.limitWidth = limitWidth;
         this.limitLength = limitLength;
         this.limitMass = limitMass;
     }
 
-    public double getLimitHeight() {
+    public int getLimitHeight() {
         return limitHeight;
     }
 
-    public double getLimitLength() {
+    public int getLimitLength() {
         return limitLength;
     }
 
-    public double getLimitWidth() {
+    public int getLimitWidth() {
         return limitWidth;
     }
 
     // Лимит по массе в холодильнике
-    public double getLimitMass() {
+    public int getLimitMass() {
         return limitMass;
     }
 
-    // Открыть дверь
-    public boolean openDoor() {
-        return isDoorOpen = true;
+    public boolean getDoor() {
+        return isDoorOpen;
     }
 
-    // Закрыть дверь
-    public boolean closeDoor() {
-        return isDoorOpen = false;
+    public void animalSlot(Animal a) {
+        animal = a;
     }
 
-    // Животное положили
-    public void putAnimal() {
-        return isFridgeEmpty = false;
+    Animal getAnimal() {
+        return animal;
+    }
+    public void freeFridge(){
+        animal = null;
     }
 
-    // Животное достали
-    public Animal getAnimal() {
-        return an;
+    // Пустой ли холодильник?
+    public boolean getEmpty() {
+        return isEmpty;
     }
 
+    public void setEmpty(boolean empty) {
+        isEmpty = empty;
+    }
+
+
+    public void setDoor(boolean door) {
+        isDoorOpen = door;
+    }
 }
