@@ -6,6 +6,7 @@ public class Animal implements IAnimal {
     private int mass;
     private int maxCapacity;
     private int usedCapacity;
+    private boolean frozen = false;
 
     //Конструктор
     public Animal(String name, int height, int width, int length, int mass) {
@@ -23,27 +24,40 @@ public class Animal implements IAnimal {
     }
 
     // Положить зверя
-    public void putAnimal(Fridge fridge, Animal animal) {
+    public void putAnimal(Fridge fridge, Animal animal) throws SizeException, FrozenException {
         try {
             openDoor(fridge);
             if (!fridge.getEmpty()) { // Если холодильник не пуст
-                System.out.println("There is no empty space. " + animal.getName() + " is in the fridge");
+                throw new FrozenException();
             } else {
                 if (!hasFreeSpace(fridge, animal)) { // Если слон слишком большой
-                    System.out.println(animal.getName() + " is too big for this fridge");
+                    throw new SizeException();
                 } else {
-                fridge.setEmpty(false);
-                fridge.animalSlot(this);
-                System.out.println(animal.getName() + " was put to the fridge");
+                    fridge.setEmpty(false);
+                    fridge.animalSlot(this);
+                    frozen = true;
+                    System.out.println(animal.getName() + " was put to the fridge");
                 }
             }
+        } catch (FrozenException ex) {
+            System.out.println("Oops, there is somebody in the fridge");
+        } catch (SizeException ex) {
+            System.out.println("Oops, your pet is too large");
         } finally {
             closeDoor(fridge);
         }
     }
 
-    public void getAnimal(String key) {
-
+    // Достать зверя
+    public void getAnimal(Fridge fridge) {
+        if (!fridge.getEmpty()) {
+            frozen = false;
+            openDoor(fridge);
+            fridge.setEmpty(true);
+            fridge.freeFridge();
+            System.out.println(getName() + " come out from the fridge");
+            closeDoor(fridge);
+        }
     }
 
     // Метод определения наличия свободного места
@@ -63,20 +77,24 @@ public class Animal implements IAnimal {
         return usedCapacity;
     }
 
+    // Получение имени
     private String getName() {
         return name;
     }
 
+    // Открыть дверь
     public boolean openDoor(Fridge fridge) {
         if (fridge.getDoor()) {
             System.out.println("Fridge door is already open!");
             return false;
-        } else { fridge.setDoor(true);
+        } else {
+            fridge.setDoor(true);
             System.out.println(getName() + " opened the door");
             return true;
         }
     }
 
+    // Закрыть дверь
     public boolean closeDoor(Fridge fridge) {
         if (!fridge.getDoor()) {
             System.out.println("The door is already closed");
@@ -87,5 +105,4 @@ public class Animal implements IAnimal {
             return true;
         }
     }
-
 }

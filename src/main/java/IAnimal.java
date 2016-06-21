@@ -3,8 +3,8 @@
  */
 public interface IAnimal {
     boolean openDoor(Fridge fridge);
-    void putAnimal(Fridge fridge, Animal animal);
-    void getAnimal(String key);
+    void putAnimal(Fridge fridge, Animal animal) throws SizeException, FrozenException;
+    void getAnimal(Fridge fridge);
     boolean hasFreeSpace(Fridge f, Animal a);
     boolean closeDoor(Fridge fridge);
 
