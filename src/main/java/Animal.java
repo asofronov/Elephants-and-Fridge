@@ -4,8 +4,7 @@ public class Animal implements IAnimal {
     private int width;
     private int length;
     private int mass;
-    private int maxCapacity;
-    private int usedCapacity;
+    private int animalSize;
     private boolean frozen = false;
 
     //Конструктор
@@ -30,12 +29,12 @@ public class Animal implements IAnimal {
             if (!fridge.getEmpty()) { // Если холодильник не пуст
                 throw new FrozenException();
             } else {
-                if (!hasFreeSpace(fridge, animal)) { // Если слон слишком большой
+                if (!compareSizes(fridge, animal)) { // Если слон слишком большой
                     throw new SizeException();
                 } else {
                     fridge.setEmpty(false);
                     fridge.animalSlot(this);
-                    frozen = true;
+                    setFrozen(true);
                     System.out.println(animal.getName() + " was put to the fridge");
                 }
             }
@@ -53,7 +52,7 @@ public class Animal implements IAnimal {
         try {
             openDoor(fridge);
             if (!fridge.getEmpty()) {
-                frozen = false;
+                setFrozen(false);
                 fridge.setEmpty(true);
                 fridge.freeFridge();
                 System.out.println(getName() + " come out from the fridge");
@@ -68,20 +67,14 @@ public class Animal implements IAnimal {
     }
 
     // Метод определения наличия свободного места
-    public boolean hasFreeSpace(Fridge fridge, Animal animal) {
-        return getMaxCapacity(fridge) >= getUsedCapacity() && fridge.getLimitMass() >= animal.getMass();
-    }
-
-    // Вычисление максимальной вместимости холодильника
-    private int getMaxCapacity(Fridge fridge) {
-        maxCapacity = fridge.getLimitHeight() * fridge.getLimitLength() * fridge.getLimitLength();
-        return maxCapacity;
+    public boolean compareSizes(Fridge fridge, Animal animal) {
+        return fridge.FridgeCapacity() >= getAnimalSize() && fridge.getLimitMass() >= animal.getMass();
     }
 
     // Вычисление места занятого животным
-    private int getUsedCapacity() {
-        usedCapacity = this.height * this.width * this.length;
-        return usedCapacity;
+    private int getAnimalSize() {
+        animalSize = this.height * this.width * this.length;
+        return animalSize;
     }
 
     // Получение имени
@@ -96,7 +89,7 @@ public class Animal implements IAnimal {
             return false;
         } else {
             fridge.setDoor(true);
-            System.out.println(getName() + " opened the door");
+            System.out.println(this.name + " opened the door");
             return true;
         }
     }
@@ -108,8 +101,16 @@ public class Animal implements IAnimal {
             return false;
         } else {
             fridge.setDoor(false);
-            System.out.println(getName() + " closed the door");
+            System.out.println(this.name + " closed the door");
             return true;
         }
+    }
+
+    public void setFrozen(boolean frozen) {
+        this.frozen = frozen;
+    }
+
+    public boolean isFrozen() {
+        return frozen;
     }
 }

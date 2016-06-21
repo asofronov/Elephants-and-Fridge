@@ -3,6 +3,7 @@ public class Fridge {
     private int limitHeight, limitWidth, limitLength, limitMass;
     private Animal animal;
     private boolean isEmpty = true;
+    private int fridgeCapacity;
 
     public Fridge(int limitHeight, int limitWidth, int limitLength, int limitMass) {
         this.limitHeight = limitHeight;
@@ -53,8 +54,12 @@ public class Fridge {
         isEmpty = empty;
     }
 
-
     public void setDoor(boolean door) {
         isDoorOpen = door;
+    }
+
+    public int FridgeCapacity() {
+        fridgeCapacity = getLimitHeight() * getLimitWidth() * getLimitLength();
+        return fridgeCapacity;
     }
 }
