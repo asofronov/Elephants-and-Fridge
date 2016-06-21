@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Elephants &amp; Fridge.iml" filepath="$PROJECT_DIR$/.idea/modules/Elephants &amp; Fridge.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Elephants_&amp;_Fridge_main.iml" filepath="$PROJECT_DIR$/.idea/modules/Elephants_&amp;_Fridge_main.iml" group="Elephants &amp; Fridge" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Elephants_&amp;_Fridge_test.iml" filepath="$PROJECT_DIR$/.idea/modules/Elephants_&amp;_Fridge_test.iml" group="Elephants &amp; Fridge" />
+    </modules>
+  </component>
+</project>
