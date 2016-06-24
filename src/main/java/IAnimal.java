@@ -3,9 +3,9 @@
  */
 public interface IAnimal {
     boolean openDoor(Fridge fridge);
-    void putAnimal(Fridge fridge, Animal animal) throws SizeException, FrozenException;
+    void putAnimal(Fridge fridge) throws SizeException, FrozenException;
     void getAnimal(Fridge fridge) throws FrozenException;
-    boolean compareSizes(Fridge f, Animal a);
+    boolean compareSizes(Fridge f);
     boolean closeDoor(Fridge fridge);
 
 }
