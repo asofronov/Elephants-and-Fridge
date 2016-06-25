@@ -5,7 +5,7 @@ public class Animal implements IAnimal {
     private int length;
     private int mass;
     private int animalSize;
-    private boolean frozen = false;
+    private boolean frozen;
 
     //Конструктор
     public Animal(String name, int height, int width, int length, int mass) {
@@ -23,44 +23,46 @@ public class Animal implements IAnimal {
     }
 
     // Положить зверя
-    public void putAnimal(Fridge fridge) throws SizeException, FrozenException {
+    public void putAnimal(Fridge fridge) throws SizeException, BusyException {
         try {
             openDoor(fridge);
             if (!fridge.getEmpty()) { // Если холодильник не пуст
-                throw new FrozenException();
-            } else {
-                if (!compareSizes(fridge)) { // Если слон слишком большой
-                    throw new SizeException();
-                } else {
-                    fridge.setEmpty(false);
-                    fridge.animalSlot(this);
-                    setFrozen(true);
-                    System.out.println(getName() + " was put to the fridge");
-                }
+                throw new BusyException();
             }
-        } catch (FrozenException ex) {
+            if (!compareSizes(fridge)) { // Если слон слишком большой
+                throw new SizeException();
+            } else {
+                fridge.setEmpty(false);
+                fridge.animalSlot(this);
+                setFrozen(true);
+                System.out.println(getName() + " was put to the fridge");
+            }
+        } catch (BusyException ex) {
             System.out.println("Oops, there is " + fridge.getAnimal().name + " in the fridge");
+            ex.printStackTrace();
         } catch (SizeException ex) {
             System.out.println("Oops, your pet is too large");
+            ex.printStackTrace();
         } finally {
             closeDoor(fridge);
         }
     }
 
     // Достать зверя
-    public void getAnimal(Fridge fridge) throws FrozenException {
+    public void getAnimal(Fridge fridge) throws BusyException {
         try {
             openDoor(fridge);
             if (!fridge.getEmpty()) {
                 setFrozen(false);
                 fridge.setEmpty(true);
                 fridge.freeFridge();
-                System.out.println(getName() + " come out from the fridge");
+                System.out.println(name + " come out from the fridge");
             } else {
-                throw new FrozenException();
+                throw new BusyException();
             }
-        } catch (FrozenException ex) {
+        } catch (BusyException ex) {
             System.out.println("There is no animals in the fridge");
+            ex.printStackTrace();
         } finally {
             closeDoor(fridge);
         }
@@ -79,7 +81,7 @@ public class Animal implements IAnimal {
     }
 
     // Получение имени
-    private String getName() {
+    public String getName() {
         return name;
     }
 
@@ -112,7 +114,4 @@ public class Animal implements IAnimal {
         this.frozen = frozen;
     }
 
-    public boolean isFrozen() {
-        return frozen;
-    }
 }

@@ -12,15 +12,15 @@ public class Fridge {
         this.limitMass = limitMass;
     }
 
-    public int getLimitHeight() {
+    private int getLimitHeight() {
         return limitHeight;
     }
 
-    public int getLimitLength() {
+    private int getLimitLength() {
         return limitLength;
     }
 
-    public int getLimitWidth() {
+    private int getLimitWidth() {
         return limitWidth;
     }
 
@@ -37,7 +37,7 @@ public class Fridge {
         animal = a;
     }
 
-    Animal getAnimal() {
+    public Animal getAnimal() {
         return animal;
     }
 
