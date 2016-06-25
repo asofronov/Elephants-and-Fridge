@@ -18,12 +18,12 @@ public class CryoRoom {
 
     }
 
-    public String toCryoRoom(Fridge fridge, Animal animal) throws CapacityOverException, FrozenException, SizeException {
+    public void toCryoRoom(Animal animal) throws CapacityOverException, FrozenException, SizeException {
         for (int count = 0; count < fridges.size(); count++) {
             if (fridges.get(count).getEmpty()) {
                 animal.putAnimal(fridges.get(count));
                 key[count] = Integer.toString(count);
-                return key[count];
+                System.out.println("Key number = " + key[count] + ". Don't miss it!");
             }
         }
         throw new CapacityOverException();
