@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 
 public class CryoRoom {
+    private int capacity;
     public ArrayList<Fridge> fridges = new ArrayList<Fridge>();
     private String[] key;
 
@@ -9,6 +10,7 @@ public class CryoRoom {
             fridges.add(new Fridge(limitHeight, limitWidth, limitLength, limitMass));
         }
         key = new String[capacity];
+        this.capacity = capacity;
 
     }
 
@@ -36,6 +38,15 @@ public class CryoRoom {
             }
         }
         throw new NoKeyException();
+    }
+
+    int usedCapacity() {
+        int usedCapacity = 0;
+        for (int count = 0; count < fridges.size(); count++) {
+            if (!fridges.get(count).getEmpty())
+                usedCapacity++;
+        }
+        return usedCapacity;
     }
 
 }

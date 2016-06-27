@@ -54,9 +54,6 @@ public class Animal implements IAnimal {
             } else {
                 throw new BusyException();
             }
-        } catch (BusyException ex) {
-            System.out.println("There is no animals in the fridge");
-            ex.printStackTrace();
         } finally {
             closeDoor(fridge);
         }
