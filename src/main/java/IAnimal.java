@@ -8,8 +8,7 @@ public interface IAnimal {
 
     void getAnimal(Fridge fridge) throws BusyException;
 
-    boolean compareSizes(Fridge f);
-
     boolean closeDoor(Fridge fridge);
 
+    boolean goodShape(Fridge fridge);
 }

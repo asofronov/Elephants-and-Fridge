@@ -8,4 +8,5 @@ repositories {
 
 dependencies {
     compile 'org.testng:testng:6.9.10'
+    compile 'com.jsmartframework:jsmart-web:2.1.0'
 }

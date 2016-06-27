@@ -29,7 +29,7 @@ public class Animal implements IAnimal {
             if (!fridge.getEmpty()) { // Если холодильник не пуст
                 throw new BusyException();
             }
-            if (!compareSizes(fridge)) { // Если слон слишком большой
+            if (!goodShape(fridge)) { // Если слон слишком большой
                 throw new SizeException();
             } else {
                 fridge.setEmpty(false);
@@ -37,12 +37,6 @@ public class Animal implements IAnimal {
                 setFrozen(true);
                 System.out.println(getName() + " was put to the fridge");
             }
-        } catch (BusyException ex) {
-            System.out.println("Oops, there is " + fridge.getAnimal().name + " in the fridge");
-            ex.printStackTrace();
-        } catch (SizeException ex) {
-            System.out.println("Oops, your pet is too large");
-            ex.printStackTrace();
         } finally {
             closeDoor(fridge);
         }
@@ -66,12 +60,6 @@ public class Animal implements IAnimal {
         } finally {
             closeDoor(fridge);
         }
-    }
-
-
-    // Метод определения наличия свободного места
-    public boolean compareSizes(Fridge fridge) {
-        return fridge.getFridgeCapacity() >= getAnimalSize() && fridge.getLimitMass() >= getMass();
     }
 
     // Вычисление места занятого животным
@@ -112,6 +100,18 @@ public class Animal implements IAnimal {
 
     public void setFrozen(boolean frozen) {
         this.frozen = frozen;
+    }
+
+    public boolean getFrozen() {
+        return frozen;
+    }
+
+    public boolean goodShape(Fridge fridge) {
+        if (fridge.getLimitMass() >= this.mass && fridge.getLimitHeight() >= this.height && fridge.getLimitWidth() >= this.width && fridge.getLimitLength() >= this.length) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
 }

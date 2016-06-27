@@ -12,15 +12,15 @@ public class Fridge {
         this.limitMass = limitMass;
     }
 
-    private int getLimitHeight() {
+    public int getLimitHeight() {
         return limitHeight;
     }
 
-    private int getLimitLength() {
+    public int getLimitLength() {
         return limitLength;
     }
 
-    private int getLimitWidth() {
+    public int getLimitWidth() {
         return limitWidth;
     }
 
@@ -57,11 +57,5 @@ public class Fridge {
     public void setDoor(boolean door) {
         isDoorOpen = door;
     }
-
-    public int getFridgeCapacity() {
-        fridgeCapacity = getLimitHeight() * getLimitWidth() * getLimitLength();
-        return fridgeCapacity;
-    }
-
 
 }

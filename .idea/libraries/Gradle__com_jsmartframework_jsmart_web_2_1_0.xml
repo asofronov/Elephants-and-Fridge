@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: com.jsmartframework:jsmart-web:2.1.0">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.jsmartframework/jsmart-web/2.1.0/85b368a70b1bac956c162dfda845154ae1777621/jsmart-web-2.1.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.jsmartframework/jsmart-web/2.1.0/a7f981d2f84734d799ea9507c55ea167e7bfe153/jsmart-web-2.1.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
